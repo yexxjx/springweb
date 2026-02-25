@@ -30,8 +30,8 @@ public class RestController4 {
     @PutMapping("/post") @ResponseBody
     public boolean method4(){return true;}
 
-    @DeleteMapping("/post")
-    public int method5(@RequestParam){
+    @DeleteMapping("/post") @ResponseBody
+    public int method5(){
         System.out.println("RestController4.method3");
         return 3;
     }
