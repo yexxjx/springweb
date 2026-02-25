@@ -17,32 +17,27 @@ public class Practice1 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String value = req.getParameter("value");
-        int value1 = Integer.parseInt(value)*2;
-        resp.getWriter().println(value1);
-        System.out.println(value1);
+        int value2 = Integer.parseInt( value );
+        resp.getWriter().println( value2 * 2 ); // 결과값은 메모장 결과 누르면 나옴
+        System.out.println("value2 = " + value2+2);
+
     }
 
 // 2. GET 메소드 일때  : 보내온값의  + 2 를 해서 결과값을 응답하기 EX) 12
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String value = req.getParameter("value");
-    int value2 = Integer.parseInt(value)+2;
-    System.out.println(value2);
+    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    int value = Integer.parseInt( req.getParameter("value") ) ; // int a = ( (3+3) *2 )
+    resp.getWriter().println( value + 2 );
 }
 
 // 3. Put 메소드 일때  : 보내온값의  / 2 를 해서 결과값을 응답하기 EX) 5
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String value = req.getParameter("value");
-        int value3 = Integer.parseInt(value)/2;
-        System.out.println(value3);
+    @Override protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    int value = Integer.parseInt( req.getParameter("value") ) ;
+    resp.getWriter().println( value / 2 );
     }
 
 // 4. Delete 메소드 일때  : 보내온값의  % 2 를 해서 결과값을 응답하기 EX) 0
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String value = req.getParameter("value");
-        int value4 = Integer.parseInt(value)%2;
-        System.out.println(value4);
-    }
+@Override protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    int value = Integer.parseInt( req.getParameter("value") ) ;
+    resp.getWriter().println( value % 2 );
+}
 }
