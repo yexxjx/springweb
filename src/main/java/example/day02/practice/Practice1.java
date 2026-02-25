@@ -1,4 +1,4 @@
-package example.day02.practice1;
+package example.day02.practice;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
