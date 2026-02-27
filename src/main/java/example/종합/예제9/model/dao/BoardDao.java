@@ -31,7 +31,7 @@ public class BoardDao {
             System.out.println("[경고] 데이터베이스 연동 실패 : 관리자에게 문의");}
     }
 
-    // 1) 전체 조회
+    // [1] 전체 조회
     public List<BoardDto> findAll() {
         List<BoardDto> list = new ArrayList<>();                                             // 1) 조회 결과 레코드들을 DTO로 저장하기 위한 리스트 선언
         try {
@@ -49,7 +49,7 @@ public class BoardDao {
         return list;                                                                         // 8) 리스트 반환
     }
 
-    // 2) 게시물 등록
+    // [2] 게시물 등록
     public boolean write(BoardDto boardDto) {
         try {
             String sql = "insert into board(bcontent, bwriter) values(?, ?)"; // 1) SQL 작성
@@ -63,7 +63,7 @@ public class BoardDao {
         } return false;                                                       // 6) 아니면 실패
     }
 
-    // 3) 게시물 수정
+    // [3] 게시물 수정
     public boolean update(BoardDto boardDto){
         try{
             String sql= "update board set bcontent=? where bno=?";
@@ -77,7 +77,7 @@ public class BoardDao {
         } return false;
     }
 
-    // 4. 게시물 삭제
+    // [4] 게시물 삭제
     public boolean delete(int bno) {
         try {
             String sql="delete from board where bno=?";
