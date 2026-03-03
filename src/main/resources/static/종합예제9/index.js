@@ -23,7 +23,7 @@ const onFindAll=async()=>{
                             <button onclick="onDelete(${board.bno})"> 삭제 </button>
                             <button onclick="onUpdate(${board.bno})"> 수정 </button>
                         </td> 
-                    </tr>`
+           </tr>`
         }
     // 3. 출력, innerHTML, 출력할 위치에 내용 대입한다.
     tbody.innerHTML=html;
