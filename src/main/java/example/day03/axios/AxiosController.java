@@ -11,6 +11,7 @@ public class AxiosController {
     public void method1( ){
         System.out.println("AxiosController.method1");
     }
+
     @DeleteMapping
     public int method2( @RequestParam String name ){
         System.out.println("AxiosController.method2");

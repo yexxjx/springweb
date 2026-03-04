@@ -1,6 +1,6 @@
 package example.day05.mvc;
 
-import org.aspectj.weaver.patterns.IfPointcut;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static aQute.bnd.annotation.headers.Resolution.optional;
-
 @Service
+@Transactional
 public class ExamService {
     @Autowired
     private ExamRepository examRepository;
@@ -69,3 +68,34 @@ public class ExamService {
         return true;
     }
 }
+
+/*
+[1] < >: 제네릭타입, 객체 생성할 때 타입 지정
+[2] optional < >: 객체 내 null 값 제어 기능/함수 제공하는 클래스, null에 따른 안전한 객체 사용
+    1) .isPresent(): 만약에 null이면 false 반환, 아니면 true 반환
+    2) .get(): 객체 반환
+    3) .orElse(null 일 때 값)
+    4) .orElseThrow(예외값)
+    사용처: JPA에서 findById 반환 타입 그외 몇몇 라이브러리 사용된다.
+    사용법:
+        방법1. Optional<엔티티> 변수명=repository.findById()
+        방법2. 엔티티 변수명=repository.findById().orElse()
+[3] JPA CRUD 기본 제공
+    1) .findAll()                : 모든 레코드/객체/엔티티 조회(select), 반환타입: List<엔티티명>
+    2) .findById(조회할pk번호)     : 특정 pk 번호의 엔티티 반환, 반환타입: Optional<엔티티명>
+    3) .save(저장할엔티티)         : 특정 엔티티를 저장(insert), 반환타입: 엔티티
+    4) .deleteById(삭제할pk번호)   : 특정 pk번호의 엔티티 삭제(delete), 반환타입: void
+    5) 수정함수는 존재하지 않는다. <영속성 특징>
+       - 영속성 갖는 시점: save, findAll, findById 등 반환된 엔티티가 영속된 엔티티
+       * 영속성이란? 데이터베이스와 자바 객체를 연결하는 관계
+       - 영속된 엔티티를 .setter 이용하여 객체 수정하면 자동으로 데이터베이스로 반영됨
+       - @Transactional 갖는 클래스/메소드는 여러 SQL를 하나의 묶음으로 한번에 처리한다
+         - 즉) 트랜젝션이란? 여러 SQL를 묶어서 하나라도 실패하면 모두 실패(Rollback) 모두 성공이면 최종성공(Commit)
+         - 예) 이체 기능은 1입금 2출금 2개 이상의 기능을 묶음 기능
+            - 입금과 출금중에 하나라도 문제가 발생하면 전체(이체)취소
+         - 영속된 객체를 .setter 이용하여 여러 개 수정함으로써 여러 개 수정(update)들을 하나로 처리한다.
+         - 즉) 수정하는 메소드에는 @Transactional 필수이다.
+
+
+*/
+
