@@ -16,7 +16,6 @@ public class BookController {
         return result;
     }
 
-
     @PostMapping("/day05/book")
     public boolean 저장(@RequestBody BookDto bookDto){
         boolean result=bookService.저장(bookDto);

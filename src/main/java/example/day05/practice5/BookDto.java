@@ -1,10 +1,11 @@
 package example.day05.practice5;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Data @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class BookDto {
     private Integer bno;
