@@ -17,7 +17,6 @@ import java.util.Optional;
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
-
     public boolean 등록(BoardDto boardDto){
         // 1) 저장할 dto > entity 변환
         BoardEntity savedEntity=boardDto.toEntity();

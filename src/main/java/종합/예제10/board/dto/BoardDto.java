@@ -18,7 +18,7 @@ public class BoardDto {
     private String updateDate;
 
     // dto > entity
-    public BoardEntity toEntity(){
+    public BoardEntity toEntity() {
         return BoardEntity.builder()
                 // bno, createDate, updateDate 자동이라 생략
                 .btitle(btitle)
