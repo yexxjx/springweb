@@ -13,6 +13,7 @@ public class CommentEntity extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cno;
+    private Integer bno;
 
     @Column(length = 30, nullable = false)
     private String cwriter;
