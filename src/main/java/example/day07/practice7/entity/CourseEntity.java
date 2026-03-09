@@ -13,7 +13,4 @@ public class CourseEntity extends Basetime {
     private Integer courseId;
     private String courseName;
 
-    @ManyToOne
-    @JoinColumn(name = "courseId")
-    private CategoryEntity CourseEntity;
 }

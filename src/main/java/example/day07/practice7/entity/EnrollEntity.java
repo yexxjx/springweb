@@ -15,7 +15,4 @@ public class EnrollEntity extends Basetime {
     private Integer enrollId;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "enrollId")
-    private CourseEntity enrollEntity;
 }

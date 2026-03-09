@@ -12,9 +12,4 @@ public class StudentEntity extends Basetime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentId;
     private String studentName;
-
-    @ManyToOne
-    @JoinColumn(name = "stdentId")
-    private CategoryEntity studentEntity;
-
 }
