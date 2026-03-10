@@ -1,9 +1,11 @@
 package example.day07.practice7.entity;
 
 import example.day07.practice7.Basetime;
-import example.day07.연관관계.CategoryEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor @NoArgsConstructor @Data @Builder
 @Entity @Table(name = "course")
@@ -12,5 +14,9 @@ public class CourseEntity extends Basetime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer courseId;
     private String courseName;
+
+    @OneToMany(mappedBy = "courseEntity")
+    @ToString.Exclude @Builder.Default
+    private List<EnrollEntity> enrollEntityList=new ArrayList<>();
 
 }
