@@ -2,10 +2,17 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <App />
-)
+const root=document.querySelector('#root');
 
+import Exam2 from './chapter5/Exam2.jsx'
+createRoot(root).render(<Exam2/>);
+
+// chapter4 예제
+// import Exam1 from './chapter4/Exam1.jsx' // 컴포넌트 불러오기
+// createRoot(root).render(< Exam1 />);
+
+// 기존코드
+// createRoot(document.getElementById('root')).render(<App />)
 
 /*
 [1] index.html(싱글페이지)에서 root라는 id갖는 div 호출
