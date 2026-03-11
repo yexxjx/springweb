@@ -1,0 +1,11 @@
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES( "자바공부하기", "chapter4 마스터", false, NOW(), NOW() );
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("베스트셀러 읽기", "프로젝트 해일메리 끝까지 읽기", false, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("오전 조깅", "공원 한 바퀴 30분 달리기", true, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("주간 보고서 작성", "금주 실적 및 차주 계획 정리", false, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("영어 단어 암기", "토익 필수 단어 50개 외우기", false, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("공과금 납부", "전기세 및 수도세 이체 확인", true, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("알고리즘 문제 풀이", "프로그래머스 레벨 2 한 문제 풀기", false, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("분리수거", "플라스틱 및 종이류 배출", false, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("명상하기", "자기 전 10분간 호흡 집중", false, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("장보기", "닭가슴살, 샐러드 채소 구매", true, NOW(), NOW());
+INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("블로그 포스팅", "오늘 배운 Java 문법 정리해서 올리기", false, NOW(), NOW());

@@ -1,4 +1,4 @@
-package example.day07.practice7;
+package example.day08;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
