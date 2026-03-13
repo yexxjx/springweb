@@ -2,6 +2,7 @@ package springbootdeveloper.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import springbootdeveloper.domain.Article;
 import springbootdeveloper.dto.AddArticleRequest;
@@ -12,7 +13,7 @@ import springbootdeveloper.service.BlogService;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController // ioc, 빈등록, @Controller+@ResponseBody 포함
+@Controller // ioc, 빈등록, @Controller+@ResponseBody 포함
 public class BlogApiController {
     private final BlogService blogService;
 

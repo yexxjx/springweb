@@ -10,6 +10,6 @@
 -- INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("장보기", "닭가슴살, 샐러드 채소 구매", true, NOW(), NOW());
 -- INSERT INTO todo (title, content, done, create_date, update_date) VALUES ("블로그 포스팅", "오늘 배운 Java 문법 정리해서 올리기", false, NOW(), NOW());
 
-INSERT INTO article(title,content) VALUES ('제목1', '내용1')
-INSERT INTO article(title,content) VALUES ('제목2', '내용2')
-INSERT INTO article(title,content) VALUES ('제목3', '내용3')
+INSERT INTO article(title,content, created_at, updated_at) VALUES ('제목1', '내용1', NOW(), NOW())
+INSERT INTO article(title,content, created_at, updated_at) VALUES ('제목2', '내용2', NOW(), NOW())
+INSERT INTO article(title,content, created_at, updated_at) VALUES ('제목3', '내용3', NOW(), NOW())
