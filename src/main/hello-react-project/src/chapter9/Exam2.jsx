@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function WriteFrom(props){
     // event/e 객체란? 해당 이벤트(onClick/onSubmit 등)가 발생했을 때 그 이벤트 정보를 담고 있는 객체
     return(<>
-    <form onSubmit={(e)=>{
-        console.log("이벤트객체", event);
+    <form onSubmit={(event)=>{
         event.preventDefault(); // 기존 onSubmit 이벤트 정보 제거
+        console.log("이벤트객체: ", event);
         // let gubun=document.querySelector(); [리액트는 querySelector 방식 하지 않는다]
         console.log("이벤트발생한주체:", event.target); // <form>
         console.log(event.target.gubun); // <form> > 하위요소, target.class명
