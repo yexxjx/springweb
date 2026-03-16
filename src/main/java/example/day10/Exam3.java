@@ -76,7 +76,7 @@ public class Exam3 {
         List<BoardDto> list =
                 entityList.stream().map( entity -> entity.toDto() ).collect( Collectors.toList() );
 
-        [4[ 래퍼런스API
+        [4] 래퍼런스API
         List<BoardDto> list=entityList.stream().map(entity :: toDto)
  */
     }
