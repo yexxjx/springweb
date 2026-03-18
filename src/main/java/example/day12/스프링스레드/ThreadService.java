@@ -15,7 +15,7 @@ public class ThreadService {
         for(int i=1; i<=10; i++){
             System.out.println("ThreadService.test1");
             // ** 스레드 일시 정지 **
-            try{Thread.sleep(1000);} // 10초간 일시정지
+            try{Thread.sleep(1000);} // 1초간 일시정지
             catch(Exception e){System.out.println(e);}
             result += i;
         } return result;

@@ -19,19 +19,15 @@ repositories {
 }
 
 dependencies { // 외부 라이브러리들을 추가하는 곳 , 추가된 라이브러리는 자동으로 설치된다.
-    implementation 'org.springframework.boot:spring-boot-starter-webmvc' // 1]SpringBoot Web
-    runtimeOnly 'com.mysql:mysql-connector-j'       // 2] mySQL vs H2
-    // runtimeOnly 'com.h2database:h2'
-    compileOnly 'org.projectlombok:lombok'          // 3] Lombok
-    annotationProcessor 'org.projectlombok:lombok'  // 3] Lombok
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // 4] JPA
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc' // 1) SpringBoot Web
+    runtimeOnly 'com.mysql:mysql-connector-j'       // 2) mySQL vs H2
+    compileOnly 'org.projectlombok:lombok'          // 3) Lombok
+    annotationProcessor 'org.projectlombok:lombok'  // 3) Lombok
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // 4) JPA
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-
-    // @AutoConfigureMockMvc
-    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.jsoup:jsoup:1.22.1' // 5) Jsoup 정적 페이지 크롤링
 }
 
 tasks.named('test') {
