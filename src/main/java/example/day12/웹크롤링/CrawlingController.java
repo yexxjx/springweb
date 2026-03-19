@@ -1,6 +1,7 @@
 package example.day12.웹크롤링;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +23,17 @@ public class CrawlingController {
     @GetMapping("/test2")
     public ResponseEntity<?> test2(){
         return ResponseEntity.ok(crawlingService.test2());
+    }
+
+    // [3]
+    @GetMapping("/test3")
+    public ResponseEntity<?> test3(){
+        return ResponseEntity.ok(crawlingService.test3());
+    }
+
+    // [4]
+    @GetMapping("/test4")
+    public ResponseEntity<?> test4(){
+        return ResponseEntity.ok(crawlingService.test4());
     }
 }
