@@ -150,7 +150,7 @@ public class CrawlingService {
             int endCount = list.size(); // 특정 반복문이 한 번 종료 되었을 때
             if(startCount==endCount){break;} // 리뷰 개수가 시작과 끝 개수가 같다면 크롤링 존재
 
-            // *** 스클로 내리기 작업 ***
+            // *** 스클롤 내리기 작업 ***
             js.executeScript("window.scrollTo(100, document.body.scrollHeight ); ");
             try { Thread.sleep( 1000 ); } catch (Exception e) {}
         }
