@@ -13,7 +13,7 @@ import springweb.member.service.MemberService;
 public class MemberController {
     private final MemberService memberService;
 
-    // 등록
+    // [1] 회원가입 post == create == save
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody MemberDto memberDto){
         return ResponseEntity.ok(memberService.signup(memberDto));
@@ -27,7 +27,8 @@ public class MemberController {
         // 2) 만약에 로그인 성공이면 세션 부여
             // 매개변수에 HttpSession session 받는다.
             // 로그인 성공한 회원의 아이디를 세션객체내 저장.setAttribute("속성명", 속성값);
-            session.setAttribute("loginMid", loginDto.getMid()); // String이 Object로 upcast 되는 부분
+        if(result){
+            session.setAttribute("loginMid", loginDto.getMid());} // String이 Object로 upcast 되는 부분
             // loginMid 대신에 loginDto 넣어도 되는데 너무 많음
         // 3) 아니면 실패
         return ResponseEntity.ok(result);
