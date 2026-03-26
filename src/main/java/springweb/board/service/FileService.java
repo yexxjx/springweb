@@ -1,4 +1,4 @@
-package example.day16;
+package springweb.board.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

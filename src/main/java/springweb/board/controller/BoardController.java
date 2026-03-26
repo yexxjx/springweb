@@ -46,6 +46,25 @@ public class BoardController {
         boolean result = boardService.write(boardDto, loginMid);
         return ResponseEntity.ok(result);
     }
+
+    // 회원제 글 등록+토큰정보+첨부파일(Content-Type: multipart/form-data
+    @PostMapping("/write3")
+    public ResponseEntity<?> write3(BoardDto boardDto, @RequestHeader("Authorization") String token){
+        // 달라진 점 [1] 첨부파일을 매핑하기 위해서 @RequestBody 사용하지 않음
+        // 달라진 점 [2] DTO에 MultipartFile 인터페이스 포함함 private MultipartFile uploadFile;
+        if (token == null || !token.startsWith("Bearer")) {
+            return ResponseEntity.ok(false); // 비로그인으로 글쓰기 실패
+        }
+        // * 토큰만 추출
+        token=token.replace("Bearer ","");
+        // 토큰에서 클레임(값) 꺼내기
+        String loginMid = jwtService.getClaim(token);
+        if (loginMid == null) {return ResponseEntity.ok(false);}
+        boolean result = boardService.write(boardDto, loginMid);
+        return ResponseEntity.ok(result);
+
+    }
+
 }
 
 

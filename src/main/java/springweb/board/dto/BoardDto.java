@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 import springweb.board.entity.BoardEntity;
 
 @NoArgsConstructor @AllArgsConstructor @Data @Builder
@@ -11,14 +12,18 @@ public class BoardDto {
     private Long bno;
     private String btitle;
     private String bcontent;
-    private String bfile;
+    private String bfile; // 조회용(DB)
 
     // + DTO에는 엔티티 정보를 포함하지 않고 필요한 정보만 멤버변수 구성한다.
     private Long mno;
     private String mname; // name 대신 id 해도 됨
+
     // + BaseTime 멤버 변수
     private String createDate;
     private String updateDate;
+
+    // + 첨부파일 매핑, 여러 개면 List<MultipartFile> 로 묶으면 됨
+    private MultipartFile uploadFile; // 업로드 용도
 
     // + toEntity
     public BoardEntity toEntity(){
