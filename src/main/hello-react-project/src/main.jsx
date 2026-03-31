@@ -5,9 +5,23 @@ import App from './App.jsx'
 // ** index.html에서 root 가져오기 **
 const root=document.querySelector('#root');
 
+// chapter11 예제
+import Exam2 from './chapter11/Exam2.jsx';
+import {BrowserRouter} from "react-router-dom";
+
+createRoot(root).render(
+    <BrowserRouter>
+        <Exam2/>
+    </BrowserRouter>
+); 
+
+// chapter10 예제
+// import Exam1 from './chapter10/Exam1.jsx';
+// createRoot(root).render(<Exam1/>)
+
 // chapter9 예제
-import Exam2 from './chapter9/Exam2.jsx';
-createRoot(root).render(<Exam2/>)
+// import Exam2 from './chapter9/Exam2.jsx';
+// createRoot(root).render(<Exam2/>)
 
 // chapter8 예제
 // import Exam1 from './chapter8/Exam1.jsx';
