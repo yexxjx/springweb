@@ -1,19 +1,28 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+// import App from './App.jsx'
 
 // ** index.html에서 root 가져오기 **
 const root=document.querySelector('#root');
 
-// chapter11 예제
-import Exam2 from './chapter11/Exam2.jsx';
-import {BrowserRouter} from "react-router-dom";
-
+// chapter12 예제
+import App from './chapter12/App.jsx';
+import { BrowserRouter } from 'react-router-dom';
 createRoot(root).render(
     <BrowserRouter>
-        <Exam2/>
+        <App/>
     </BrowserRouter>
-); 
+)
+
+// chapter11 예제
+// import Exam2 from './chapter11/Exam2.jsx';
+// import {BrowserRouter} from "react-router-dom";
+
+// createRoot(root).render(
+//     <BrowserRouter>
+//         <Exam2/>
+//     </BrowserRouter>
+// ); 
 
 // chapter10 예제
 // import Exam1 from './chapter10/Exam1.jsx';
