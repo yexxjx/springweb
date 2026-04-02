@@ -1,6 +1,8 @@
-package example.practice1;
+package 종합.practice1;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TaskRepository extends JpaRepository<TaskEntity, Integer> {
+@Repository
+public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
 }

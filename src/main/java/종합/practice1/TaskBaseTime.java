@@ -1,4 +1,4 @@
-package example.practice1;
+package 종합.practice1;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/practice1") // 해당 서블릿 클래스의 주소는 "/practice1" 정의하기
+@WebServlet("/종합/practice1") // 해당 서블릿 클래스의 주소는 "/practice1" 정의하기
 public class Practice1 extends HttpServlet {
 // 3. 쿼리스트링 방식으로 데이터와 함께 서블릿 주소를 요청 보내기   EX) 서블릿주소?value=10
 
