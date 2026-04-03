@@ -54,7 +54,7 @@ export default function Header(props){
             {/* 비로그인메뉴 */}
             {login==false&&(<>
             <Link to="/member/login">로그인</Link>ㅣ
-            <Link to="/member/singup">회원가입</Link>ㅣ
+            <Link to="/member/signup">회원가입</Link>ㅣ
             </>)} 
 
             {/* 로그인메뉴 */}
