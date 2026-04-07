@@ -11,15 +11,19 @@ export default function Login(props){
         // 2) 객체 구성: 전송할 내용
         const obj={mid:mid, mpwd:mpwd}
         // 3) AXIOS 동기 통신
-        const response=await axios.post("http://localhost:8080/api/member2/login",obj); // @CrossOrigin(value = "http://localhost:5173") 적어줘야됨
+        const response=await axios.post("http://localhost:8080/api/member3/login", // @CrossOrigin(value = "http://localhost:5173") 적어줘야됨
+        obj, // 통신할 서버에게 전송할 값(매개변수)
+        {withCredentials:true} // 통신할 서버에게 쿠키값 통신 
+        );
         // 4) 인증 결과 확인(HTTP Header에 Authorization 속성 확인 )
-        let token=response.headers['authorization'];
+        // let token=response.headers['authorization']; // 쿠키 사용시 제거
         // 5) 인증 결과 분기
-        if(token&&token.startsWith('Bearer ')){ // Bearer < 한 칸 띄어쓰기 주의
-            token=token.substring(7); // Bearer 문자열내 7번째부터 자른 값 대입 즉) Bearer 제거
-        } if(token){
+        // if(token&&token.startsWith('Bearer ')){ // Bearer < 한 칸 띄어쓰기 주의
+        //     token=token.substring(7); // Bearer 문자열내 7번째부터 자른 값 대입 즉) Bearer 제거
+        // } 
+        if(response.data==true){ // 응답값이 true이면 응답 성공
             // 페이지 이동하기 전에 localStorage에 토큰 저장, 예) 글쓰기할 경우 token이 필요
-            localStorage.setItem("token", token); // token 이라는 이름으로 서버로부터 받은 token 저장
+            // localStorage.setItem("token", token); // token 이라는 이름으로 서버로부터 받은 token 저장 // 쿠키 사용시 제거 
             alert('로그인 성공'); 
             location.href="/"; // 메인페이지 이동, (인증=로그인/로그아웃) 주의할 점: navigate 대신 location.href 활용
         } else{alert('로그인 실패');}

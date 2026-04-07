@@ -2,6 +2,8 @@ package springweb.board.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import springweb.board.dto.BoardDto;
 import springweb.board.entity.BoardEntity;
@@ -9,6 +11,7 @@ import springweb.board.repository.BoardRepository;
 import springweb.member.entity.MemberEntity;
 import springweb.member.repository.MemberRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,5 +42,21 @@ public class BoardService {
         BoardEntity savedEntity = boardRepository.save(saveEntity); // 2) entity 저장
         if(savedEntity.getBno()>0){return true;}
         else{return false;}
+    }
+
+    // 전체 조회
+    public List<BoardDto> findAll(){
+        return boardRepository.findAll(Sort.by(Sort.Direction.DESC,"bno"))
+                .stream() // .stream()이란? 여러 개 자료를 갖는 자료(리스트/배열)들의 처리 지원 함수
+                // .map(boardEntity-> {return boardEntity.toDto();}) // map(반복변수 -> {return 실행문})
+                .map(BoardEntity::toDto) // 메소드 레퍼런스란, 화살표 함수 간결하게 사용하는 문법, 클래스명::함수명
+                .toList(); // 리스트 타입으로 반환
+    }
+
+    // 개별 조회
+    public BoardDto findById(Long bno){
+        return boardRepository.findById(bno) // .findbyId(pk번호) 개별엔티티조회
+                .orElse(null) // 만일 엔티티가 없으면
+                .toDto(); // 엔티티가 존재하면 DTO로 반환
     }
 }

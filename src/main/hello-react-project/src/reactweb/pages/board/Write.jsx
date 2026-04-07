@@ -1,5 +1,9 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
+import { useState } from 'react';
+
 
 export default function Write(props){
     const navigate=useNavigate();
@@ -8,21 +12,22 @@ export default function Write(props){
     const boardWrite=async(e)=>{
         e.preventDefault();
         // 0) token 가져오기
-        const token=localStorage.getItem('token');
+        // const token=localStorage.getItem('token'); // 쿠키 사용해서 토큰 필요없음
         // 1) 입력받은 값 가져오기
         const btitle=e.target.btitle.value;
-        const bcontent=e.target.bcontent.value;
+        // const bcontent=e.target.bcontent.value; // input > quill 변경 ***
         const uploadFile=e.target.uploadFile.files[0]
         // value: 입력받은 자료, files: file type의 등록된 파일, files[0]: 선택된 파일 1개 가져오기
         // 2) 객체 구성 하지 않고 멀티(대용량/바이트) 폼 객체, multipart/form-data
         const formData=new FormData(); // 대용량 폼을 지원하는 객체
         formData.append('btitle', btitle); // .append(속성명, 값); 대용량 폼에 속성 추가한다.
-        formData.append('bcontent', bcontent);
+        formData.append('bcontent',value); // formData.append('bcontent', bcontent);
         if(uploadFile){formData.append('uploadFile', uploadFile);} // 첨부파일이 존재하면 추가
         // 3) AXIOS 
-        const response=await axios.post('http://localhost:8080/api/board/write3', // 서버 주소
+        const response=await axios.post('http://localhost:8080/api/board/write4', // 서버 주소
             formData, // 전송할 객체
-            {headers:{Authorization:`Bearer ${token}`}} // HTTP 요청 HEADER
+            {withCredentials:true} // 쿠키로 변경
+            // {headers:{Authorization:`Bearer ${token}`}} // HTTP 요청 HEADER
         );
         const data=response.data;
         if(data==true){
@@ -31,12 +36,41 @@ export default function Write(props){
         } else{alert("글쓰기 실패");}
     }
 
+    const [value, setValue] = useState(''); // 웹 에디터 입력값을 갖는 상태 변수
+    {/* 웹 에디터 설정 변경 */}
+    const modules={
+        toolbar:[
+            [{header:[1,2,3,4]}],
+            ["bold","italic","underline"],
+            [{"list":"ordered"}, {"list":"bullet"}],
+            ["image"] // 이미지 기능 추가
+
+        ]
+    }
+
+    const formats=[
+        "header",
+        "bold", "italic", "underline",
+        "list",
+        "image"
+    ]
+
     return(<>
         <div>
             <h2>글쓰기 페이지</h2>
             <form onSubmit={boardWrite}>
                 제목: <input name="btitle"/><br/>
-                내용: <textarea name="bcontent"></textarea><br/>
+                
+                { /* 웹 에디터 */}
+                <ReactQuill 
+                    theme="snow" 
+                    value={value} 
+                    onChange={setValue} 
+                    modules={ modules }
+                    formats={ formats }
+                />
+
+                {/*내용: <textarea name="bcontent"></textarea><br/>*/}
                 첨부파일: <input name="uploadFile" type="file"/><br/>
                 <button type="submit">등록하기</button>
             </form>

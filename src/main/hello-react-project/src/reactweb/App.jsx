@@ -3,6 +3,8 @@ import Login from "./pages/member/Login"
 import Header from "./components/Header";
 import Write from "./pages/board/Write";
 import Signup from "./pages/member/Signup";
+import Board from "./pages/board/Board";
+import View from "./pages/board/View";
 
 export default function App(props){
     return(
@@ -13,6 +15,8 @@ export default function App(props){
             <Route path="/member/signup" element={<Signup/>}/>
             <Route path="/member/login" element={<Login/>} />
             <Route path="/board/write" element={<Write/>} />
+            <Route path="/board" element={<Board/>} />
+            <Route path="/board/view" element={<View/>} />
         </Routes>
         {/* 푸터 */}
     </div>
