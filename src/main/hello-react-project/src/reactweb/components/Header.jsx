@@ -72,6 +72,7 @@ export default function Header(props){
             <span>{user.mid}님</span>ㅣ
             <Link to="/member/page">내정보</Link>ㅣ
             <Link to="/board/write">글쓰기</Link>ㅣ
+            <Link to="/chat">채팅방</Link>ㅣ
             <button onClick={logout}>로그아웃</button>
             </>)} 
             <hr/>
