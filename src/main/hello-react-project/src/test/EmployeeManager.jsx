@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import axios from'axios';
 
 export default function EmployeeManager() {
   return (
@@ -15,9 +16,6 @@ export default function EmployeeManager() {
         <div className="form-row">
           <select>
             <option>부서를 선택하세요</option>
-            <option>개발팀</option>
-            <option>디자인팀</option>
-            <option>기획팀</option>
           </select>
           <input type="file" />
         </div>

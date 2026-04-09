@@ -3,25 +3,42 @@ import { useEffect, useState } from 'react';
 
 export default function DepartmentManager() {
 
+  // 부서 등록
   const departcreate=async(e)=>{
     e.preventDefault();
+    try{
     const dname=e.target.dname.value;
     const obj={dname:dname}
     const response=await axios.post("http://localhost:8080/depart", obj);
     if(response.data){
       alert('부서 등록 성공');
       location.href="/";
-    } else {alert('부서 등록 실패');}
+    } else {alert('부서 등록 실패');}}
+    catch{alert('중복된 부서명 등록으로 실패');}
   }
 
+  // 부서 조회
   const [departList, setDepartList] =useState([]);
-  const findAll=async()=>{
+  const departread=async()=>{
       const response=await axios.get("http://localhost:8080/depart");
       const data=response.data;
       setDepartList(data);
   }
-  useEffect(()=>{findAll();},[])
+  useEffect(()=>{departread();},[])
 
+  // 부서 수정
+  const departupdate=async(dno)=>{
+    const newdepart=prompt("수정할 부서명 입력");
+    const obj={dname:newdepart}
+    const response=await axios.put(`http://localhost:8080/depart/update?dno=${dno}`, obj);
+    console.log(newdepart);
+    if(response.data){
+      alert('부서 수정 성공');
+      location.href="/";
+    } else{alert('부서 수정 실패');}
+  }
+
+  // 부서 삭제
   const departdelete=async(dno)=>{
     const response=await axios.delete(`http://localhost:8080/depart?dno=${dno}`);
     if(response.data==true){
@@ -29,10 +46,6 @@ export default function DepartmentManager() {
       location.href="/";
     } else {alert('부서 삭제 실패');}
   }
-
-  // const departupdate=async()=>{
-  //   const response=await axios.put(`http://localhost:8080/depart?dno=${dno}`);
-  // }
 
   return (<>
     <div className="sidebar">
@@ -56,7 +69,7 @@ export default function DepartmentManager() {
                <tr key={depart.dno}>
                 <td>{depart.dname}</td>
                 <td>
-                  <span className="edit">수정</span>
+                  <span onClick={()=>departupdate(depart.dno)} className="edit">수정</span>
                   <span onClick={()=>departdelete(depart.dno)} className="delete">삭제</span>
                 </td>
               </tr>
